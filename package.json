@@ -1,0 +1,63 @@
+{
+  "name": "desktop-todo-widget",
+  "version": "1.0.0",
+  "description": "A lightweight, always-visible desktop to-do list widget",
+  "main": "src/main.js",
+  "author": "Your Name",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-packager . desktop-todo-widget --platform=win32 --arch=x64 --out=dist --overwrite",
+    "build:electron-builder": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
+    "dist": "npm run build"
+  },
+  "keywords": [
+    "electron",
+    "todo",
+    "widget",
+    "desktop",
+    "productivity"
+  ],
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4",
+    "electron-packager": "^17.1.2"
+  },
+  "dependencies": {
+    "electron-store": "^8.1.0"
+  },
+  "build": {
+    "appId": "com.example.desktop-todo-widget",
+    "productName": "Desktop Todo Widget",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "compression": "store",
+    "win": {
+      "target": "dir"
+    },
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.productivity"
+    },
+    "linux": {
+      "target": "AppImage",
+      "category": "Office"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "extraMetadata": {
+      "main": "src/main.js"
+    }
+  }
+}
